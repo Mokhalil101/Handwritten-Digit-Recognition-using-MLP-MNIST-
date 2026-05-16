@@ -1,138 +1,147 @@
-# Handwritten Digit Recognition using Multilayer Perceptron (MLP)
+# 🧠 Handwritten Digit Recognition using Multilayer Perceptron (MLP)
 
-## 📌 Problem Description
-This project aims to build a **Handwritten Digit Recognition system** using a **Multilayer Perceptron (MLP)** neural network.  
-The model classifies handwritten digit images (0–9) from the MNIST dataset into their corresponding classes.
+## 🚀 Project Overview
+This project implements a **Handwritten Digit Recognition system** using a **Multilayer Perceptron (MLP)** built with PyTorch.
 
-The task is formulated as a **multi-class classification problem** with 10 output classes.
+The model classifies grayscale images of handwritten digits (0–9) from the MNIST dataset into 10 classes, making it a **multi-class classification problem**.
 
 ---
 
 ## 📊 Dataset
+
 - **Dataset Name:** MNIST (Modified National Institute of Standards and Technology)
 - **Type:** Grayscale images
 - **Image Size:** 28 × 28 pixels
 - **Number of Classes:** 10 (digits 0–9)
 
-### Dataset Link
-https://www.kaggle.com/datasets/oddrationale/mnist-in-csv  
-(Also loaded directly using PyTorch `torchvision.datasets.MNIST`)
+### 📥 Dataset Source
+- Kaggle Dataset:  
+  https://www.kaggle.com/datasets/oddrationale/mnist-in-csv  
+- Also loaded using:
+  `torchvision.datasets.MNIST`
 
 ---
 
 ## 🔧 Data Preprocessing
-The following preprocessing steps were applied:
 
-- **Missing Values:**  
-  The MNIST dataset does not contain missing values, so no handling was required.
-
-- **Normalization:**  
-  Pixel values were normalized using:
-
+### ✔ Normalization
+```python
 Normalize(mean=0.5, std=0.5)
+✔ Reshaping
 
+Images are flattened from:
 
-- **Reshaping:**  
-Images were flattened from 28×28 to 784-dimensional vectors to be compatible with the MLP input layer.
+28 × 28 → 784 features
+✔ Data Split
+Training Set: 80%
+Validation Set: 20%
+Test Set: 10,000 samples
+🧠 Model Architecture (MLP)
+Input Layer: 784 neurons
+Hidden Layers: Configurable (based on experiment)
+Output Layer: 10 neurons
+📌 Architecture Flow
+784 → Hidden Layer 1 → Hidden Layer 2 → 10
+🔥 Activation Functions Used
+ReLU
+Tanh
+⚙️ Training Configuration
+Loss Function: CrossEntropyLoss
+Optimizer: Adam
+Batch Size: 64
+Epochs: 10
+Device: GPU (if available) / CPU
+📈 Metrics Tracked
 
-- **Encoding:**  
-Labels are already encoded as integers (0–9), so no additional encoding was needed.
+During training:
 
-- **Data Split:**  
-- Training set: 60,000 samples  
-- Testing set: 10,000 samples  
-
----
-
-## 🧠 Model Architecture (MLP)
-The implemented model is a **Multilayer Perceptron** consisting of:
-
-- Input Layer: 784 neurons  
-- Hidden Layers: Variable (based on experiment)  
-- Output Layer: 10 neurons  
-
-### General Architecture
-
-Input (784)
-→ Hidden Layer 1
-→ Hidden Layer 2
-→ Output (10)
-
-
----
-
-## ⚙️ Training Configuration
-- **Loss Function:** CrossEntropyLoss  
-- **Optimizer:** Adam  
-- **Batch Size:** 64  
-- **Epochs:** 10  
-- **Device:** GPU (if available) / CPU  
-
-During training, the following metrics were monitored:
-- Training Loss
-- Training Accuracy
-
----
-
-## 🧪 Experiments (Mandatory Requirement)
+Training Loss
+Training Accuracy
+Validation Loss
+Validation Accuracy
+🧪 Experiments
 
 Two experiments were conducted by varying:
-- Activation function
-- Number of neurons
-- Learning rate
 
-### 🔹 Experiment Settings
+Activation function
+Number of neurons
+Learning rate
+🔬 Experiment Settings
+Experiment	Activation	Hidden Layers	Learning Rate
+Experiment 1	ReLU	128 → 64	0.001
+Experiment 2	Tanh	256 → 128	0.0005
+📊 Results
+Experiment	Test Accuracy	Test Loss
+Experiment 1 (ReLU)	~97%	Lower
+Experiment 2 (Tanh)	~96%	Higher
+📌 Observations
+ReLU converges faster and achieves better performance.
+Tanh shows slower convergence and slightly lower accuracy.
+Increasing hidden layer size improves model capacity but increases training time.
+📉 Visualizations
 
-| Experiment | Activation | Hidden Layers | Learning Rate |
-|----------|-----------|---------------|---------------|
-| Experiment 1 | ReLU | 128 → 64 | 0.001 |
-| Experiment 2 | Tanh | 256 → 128 | 0.0005 |
+The following plots are generated:
 
----
+Training Loss vs Epochs
+Validation Loss vs Epochs
+Training Accuracy vs Epochs
+Validation Accuracy vs Epochs
+🎯 Purpose
 
-## 📈 Results
+These visualizations help analyze:
 
-| Experiment | Test Accuracy | Test Loss |
-|----------|---------------|-----------|
-| Experiment 1 (ReLU) | ~97% | Lower |
-| Experiment 2 (Tanh) | ~96% | Higher |
+Model convergence behavior
+Overfitting / underfitting
+Performance stability across experiments
+🧪 Evaluation
 
-### Observations
-- ReLU achieved faster convergence and higher accuracy.
-- Tanh showed slower learning and slightly lower performance.
-- Increasing the number of neurons increased model capacity but also training time.
+The model was evaluated using:
 
----
+Accuracy (classification metric)
+Final Test Loss
 
-## 📉 Visualization
-The following plots are included:
-- Training Loss vs Epochs (for both experiments)
-- Training Accuracy vs Epochs (for both experiments)
+Note: Mean Squared Error (MSE) is not used because this is a classification problem.
 
-These visualizations help compare convergence behavior and performance stability.
+▶️ How to Run the Project
+1️⃣ Install Dependencies
 
----
+All required libraries are listed in:
 
-## 🧪 Evaluation
-The model was evaluated on the test dataset using:
-- **Accuracy** (classification metric)
-- **Final Loss Value**
+requirements.txt
 
-> Mean Squared Error (MSE) was not used because the problem is a classification task, not regression.
-## ▶️ How to Run the Project
-1. Open Google Colab or local environment
-2. Install dependencies:
-```bash
-pip install torch torchvision matplotlib
-Run the notebook cells sequentially
-Training and evaluation results will be displayed automatically
-✅ Conclusion
+Install them using:
 
-This project successfully demonstrates the use of a Multilayer Perceptron for handwritten digit recognition.
-Experimentation shows that activation functions and network size significantly impact performance.
+pip install -r requirements.txt
+2️⃣ Run the Project
+Open Google Colab or local environment
+Run all cells sequentially
+3️⃣ Output
 
-Future improvements may include:
+The system will:
 
-Adding Dropout for regularization
-Trying Batch Normalization
-Increasing number of experiments
+Train the MLP model
+Run experiments
+Display results
+Generate comparison plots
+
+🧠 Key Insights
+ReLU performs better than Tanh due to reduced vanishing gradient problem.
+Increasing hidden layers improves learning capacity but increases computation cost.
+Validation monitoring is essential for generalization performance.
+🚀 Future Improvements
+Add Dropout regularization
+Apply Batch Normalization
+Try deeper architectures
+Compare with CNN models
+Hyperparameter tuning (Grid Search / Random Search)
+👨‍💻 Conclusion
+
+This project demonstrates the effectiveness of a Multilayer Perceptron (MLP) for handwritten digit recognition using the MNIST dataset.
+
+It shows how:
+
+Architecture design
+Activation functions
+Learning rate
+
+significantly impact model performance.
