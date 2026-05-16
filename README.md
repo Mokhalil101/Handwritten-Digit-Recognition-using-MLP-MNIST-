@@ -33,9 +33,9 @@ Grayscale handwritten digit images
 ```python
 transforms.Normalize((0.5,), (0.5,))
 
-## 🔧 Data Preprocessing
-
-### Reshaping
+###🔧 Data Preprocessing
+```python
+## Reshaping
 Since MLP requires 1D input, each image is flattened:
 
 28 × 28 → 784 features  
@@ -84,7 +84,7 @@ GPU / CPU
 
 ---
 
-## 📈 Training Monitoring
+###📈 Training Monitoring
 
 During training, the following metrics are tracked:
 
@@ -95,7 +95,7 @@ During training, the following metrics are tracked:
 
 ---
 
-## 🧪 Experiments
+### 🧪 Experiments
 
 | Experiment | Activation | Hidden Layers | Learning Rate |
 |------------|------------|---------------|----------------|
@@ -104,7 +104,7 @@ During training, the following metrics are tracked:
 
 ---
 
-## 📊 Results
+### 📊 Results
 
 | Experiment | Test Accuracy | Test Loss |
 |------------|--------------|----------|
@@ -137,7 +137,7 @@ The project includes:
 
 ---
 
-## 🧪 Evaluation
+### 🧪 Evaluation
 
 - Accuracy (primary metric)  
 - Final test loss  
@@ -146,7 +146,7 @@ The project includes:
 
 ---
 
-## ▶️ How to Run
+###▶️ How to Run
 
 ### Run Project
 - Open Jupyter Notebook or Google Colab  
