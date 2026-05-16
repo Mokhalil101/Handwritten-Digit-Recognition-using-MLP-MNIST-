@@ -3,27 +3,33 @@
 ## 📌 Overview
 This project implements a **Handwritten Digit Recognition system** using a **Multilayer Perceptron (MLP)** neural network built with PyTorch.
 
-The model classifies handwritten digit images (0–9) from the **MNIST dataset**, making it a multi-class classification problem.
+The model classifies handwritten digit images (0–9) from the **MNIST dataset**, making it a multi-class classification task.
 
 ---
 
 ## 📊 Dataset
 
-**Name:** MNIST (Modified National Institute of Standards and Technology)  
-**Type:** Grayscale handwritten digit images  
-**Image Size:** 28 × 28 pixels  
-**Classes:** 10 classes (digits 0–9)
+### Name
+MNIST (Modified National Institute of Standards and Technology)
 
-**Sources:**
+### Type
+Grayscale handwritten digit images
+
+### Image Size
+28 × 28 pixels
+
+### Classes
+10 classes (digits 0–9)
+
+### Sources
 - https://www.kaggle.com/datasets/oddrationale/mnist-in-csv  
-- `torchvision.datasets.MNIST`
+- torchvision.datasets.MNIST  
 
 ---
 
 ## 🔧 Data Preprocessing
 
 ### Normalization
-Pixel values are normalized to improve training stability:
 ```python
 transforms.Normalize((0.5,), (0.5,))
 
@@ -61,11 +67,20 @@ Since MLP requires 1D input, each image is flattened:
 
 ## ⚙️ Training Setup
 
-- Loss Function: CrossEntropyLoss  
-- Optimizer: Adam  
-- Batch Size: 64  
-- Epochs: 10  
-- Device: GPU / CPU  
+### Loss Function
+CrossEntropyLoss  
+
+### Optimizer
+Adam  
+
+### Batch Size
+64  
+
+### Epochs
+10  
+
+### Device
+GPU / CPU  
 
 ---
 
@@ -130,12 +145,6 @@ The project includes:
 > MSE is not used since this is a classification task.
 
 ---
-
-## ▶️ How to Run
-
-### Install Dependencies
-```bash
-pip install -r requirements.txt
 
 ## ▶️ How to Run
 
