@@ -1,183 +1,139 @@
-# 🧠 Handwritten Digit Recognition using Multilayer Perceptron (MLP)
+# MNIST Handwritten Digit Classification using PyTorch
 
-## 📌 Overview
-This project implements a **Handwritten Digit Recognition system** using a **Multilayer Perceptron (MLP)** neural network built with PyTorch.
+This project implements a **Multi-Layer Perceptron (MLP)** neural network using **PyTorch** to classify handwritten digits from the MNIST dataset.
 
-The model classifies handwritten digit images (0–9) from the **MNIST dataset**, making it a multi-class classification task.
-
----
-
-## 📊 Dataset
-
-### Name
-MNIST (Modified National Institute of Standards and Technology)
-
-### Type
-Grayscale handwritten digit images
-
-### Image Size
-28 × 28 pixels
-
-### Classes
-10 classes (digits 0–9)
-
-### Sources
-- https://www.kaggle.com/datasets/oddrationale/mnist-in-csv  
-- torchvision.datasets.MNIST  
+Two different experiments were conducted with different architectures and activation functions to compare performance.
 
 ---
 
-## 🔧 Data Preprocessing
-
-### Normalization
-```python
-transforms.Normalize((0.5,), (0.5,))
-
-###🔧 Data Preprocessing
-```python
-## Reshaping
-Since MLP requires 1D input, each image is flattened:
-
-28 × 28 → 784 features  
-
----
-
-### Dataset Split
-- Training set: 80%  
-- Validation set: 20%  
-- Test set: 10,000 samples  
-
----
-
-## 🧠 Model Architecture
-
-### Structure
-- Input layer: 784 neurons  
-- Hidden layers: configurable  
-- Output layer: 10 neurons  
-
-### Forward Flow
-784 → Hidden Layer 1 → Hidden Layer 2 → 10  
-
-### Activation Functions
-- ReLU  
-- Tanh  
-
----
-
-## ⚙️ Training Setup
-
-### Loss Function
-CrossEntropyLoss  
-
-### Optimizer
-Adam  
-
-### Batch Size
-64  
-
-### Epochs
-10  
-
-### Device
-GPU / CPU  
-
----
-
-###📈 Training Monitoring
-
-During training, the following metrics are tracked:
-
-- Training Loss  
-- Training Accuracy  
-- Validation Loss  
-- Validation Accuracy  
-
----
-
-### 🧪 Experiments
-
-| Experiment | Activation | Hidden Layers | Learning Rate |
-|------------|------------|---------------|----------------|
-| 1 | ReLU | 128 → 64 | 0.001 |
-| 2 | Tanh | 256 → 128 | 0.0005 |
-
----
-
-### 📊 Results
-
-| Experiment | Test Accuracy | Test Loss |
-|------------|--------------|----------|
-| 1 | ~97% | Lower |
-| 2 | ~96% | Higher |
-
----
-
-## 📌 Key Observations
-
-- ReLU converges faster and performs better  
-- Tanh converges slower with slightly lower accuracy  
-- Larger hidden layers increase model capacity but also training time  
-
----
-
-## 📉 Visualizations
+# Project Overview
 
 The project includes:
 
-- Training Loss vs Epochs  
-- Validation Loss vs Epochs  
-- Training Accuracy vs Epochs  
-- Validation Accuracy vs Epochs  
-
-### Insights
-- Model convergence  
-- Overfitting / underfitting  
-- Generalization performance  
+- Loading and preprocessing the MNIST dataset
+- Building a customizable MLP model
+- Training and validation loops
+- Model evaluation on test data
+- Comparing multiple experiments
+- Visualizing loss and accuracy curves
 
 ---
 
-### 🧪 Evaluation
+# Technologies Used
 
-- Accuracy (primary metric)  
-- Final test loss  
-
-> MSE is not used since this is a classification task.
-
----
-
-###▶️ How to Run
-
-### Run Project
-- Open Jupyter Notebook or Google Colab  
-- Run all cells sequentially  
-
-### Output
-- Train the MLP model  
-- Run experiments  
-- Display results  
-- Generate plots  
+- Python
+- PyTorch
+- Torchvision
+- NumPy
+- Matplotlib
 
 ---
 
-## 🚀 Future Improvements
+# Dataset
 
-- Add Dropout regularization  
-- Apply Batch Normalization  
-- Try deeper architectures  
-- Compare with CNN models  
-- Hyperparameter tuning  
+The project uses the MNIST dataset provided by `torchvision.datasets`.
+
+- Training images: 60,000
+- Test images: 10,000
+- Image size: 28 × 28 grayscale
+
+Dataset is automatically downloaded when running the code.
 
 ---
 
-## 👨‍💻 Conclusion
+# Data Preprocessing
 
-This project demonstrates how a **Multilayer Perceptron (MLP)** can be effectively used for handwritten digit recognition.
+The following transformations are applied:
 
-It highlights the impact of:
+```python
+transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.5,), (0.5,))
+])
+Steps:
+Convert images to tensors
+Normalize pixel values to improve training stability
+Model Architecture
 
-- Network architecture  
-- Activation functions  
-- Learning rate  
+The model is a simple fully connected neural network (MLP).
 
-on model performance and convergence.
+Architecture
+Input Layer: 28×28 = 784 neurons
+Hidden Layer 1
+Activation Function
+Hidden Layer 2
+Activation Function
+Output Layer: 10 neurons
+Experiments
+Experiment 1
+Parameter	Value
+Hidden Layer 1	128
+Hidden Layer 2	64
+Activation	ReLU
+Learning Rate	0.001
+Results
+Test Accuracy: 96.60%
+Test Loss: 0.1095
+Experiment 2
+Parameter	Value
+Hidden Layer 1	256
+Hidden Layer 2	128
+Activation	Tanh
+Learning Rate	0.0005
+Results
+Test Accuracy: 97.30%
+Test Loss: 0.0855
+Training Process
+
+The training loop performs:
+
+Forward propagation
+Loss computation using CrossEntropyLoss
+Backpropagation
+Parameter updates using Adam optimizer
+
+Validation is performed after every epoch.
+
+Evaluation
+
+The model is evaluated on the MNIST test dataset using:
+
+Test Loss
+Test Accuracy
+Visualizations
+
+The project generates:
+
+Loss comparison plot
+Accuracy comparison plot
+
+These plots help compare training and validation performance across experiments.
+
+How to Run
+1. Clone Repository
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+2. Install Dependencies
+pip install torch torchvision matplotlib numpy
+3. Run the Script
+python main.py
+Project Structure
+├── data/
+├── main.py
+├── README.md
+Results Summary
+Experiment	Test Accuracy
+Experiment 1	96.60%
+Experiment 2	97.30%
+
+Experiment 2 achieved the best performance.
+
+Future Improvements
+
+Possible improvements for this project:
+
+Add Dropout layers
+Use Convolutional Neural Networks (CNNs)
+Hyperparameter tuning
+Add confusion matrix visualization
+Save and load trained models
