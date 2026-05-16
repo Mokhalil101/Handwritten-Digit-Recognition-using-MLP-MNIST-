@@ -38,7 +38,7 @@ The project uses the **MNIST Handwritten Digits Dataset** provided by Torchvisio
 - Image size: 28 × 28 grayscale
 
 Dataset Link:  
-https://yann.lecun.com/exdb/mnist/
+(https://docs.pytorch.org/vision/stable/generated/torchvision.datasets.MNIST.html)
 
 The dataset is automatically downloaded when running the code.
 
