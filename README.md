@@ -151,8 +151,8 @@ These plots help compare training and validation performance across experiments.
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/Mokhalil101/Handwritten-Digit-Recognition-using-MLP-MNIST-.git
+cd Handwritten-Digit-Recognition-using-MLP-MNIST-
 ```
 
 ---
